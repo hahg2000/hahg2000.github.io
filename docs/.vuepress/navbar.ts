@@ -15,6 +15,11 @@ export default defineNavbarConfig([
     link: 'https://vuepress-theme-hope.github.io/v2/zh/',
   },
   {
+    text: '时间轴',
+    icon: 'time',
+    link: '/timeline/',
+  },
+  {
     text: '常用链接',
     icon: 'network',
     link: 'https://vuepress-theme-hope.github.io/v2/zh/',
