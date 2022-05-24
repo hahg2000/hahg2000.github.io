@@ -1,4 +1,4 @@
-# 重学CSS-上
+重学CSS-上
 
 ## 一、CSS颜色
 
@@ -249,6 +249,8 @@ h1 {
 
 ##  七、CSS字体
 
+### 7.1 字体系列
+
 字体总体分为五部分：
 
 + **Serif**（衬线）：每一个字母都有边缘都有一个小笔划
@@ -262,7 +264,522 @@ h1 {
 | Generic Font Family | Examples of Font Names                                       |
 | :------------------ | :----------------------------------------------------------- |
 | Serif               | <span style="font-size: 150%; font-family:'Times New Roman'">Times New Roman</span> <br /><span style="font-size: 150%; font-family:Georgia">Georgia</span> <br /><span style="font-size: 150%; font-family:Garamond">Garamond</span> |
-| Sans-serif          | <span style="font-size: 150%; font-family:Arial">Arial</span> <br />Verdana <br />Helvetica |
-| Monospace           | Courier New Lucida Console Monaco                            |
-| Cursive             | Brush Script MT Lucida Handwriting                           |
-| Fantasy             | Copperplate Papyrus                                          |
+| Sans-serif          | <span style="font-size: 150%; font-family:Arial">Arial</span> <br /><span style="font-size: 150%; font-family:Verdana ">Verdana</span> <br /><span style="font-size: 150%; font-family:Helvetica">Helvetica</span> |
+| Monospace           | <span style="font-size: 150%; font-family:'Courier New'">Courier New</span> <br /><span style="font-size: 150%; font-family:'Lucida Console'">Lucida Console</span> <br /><span style="font-size: 150%; font-family:'Monaco'">Monaco</span> |
+| Cursive             | <span style="font-size: 150%; font-family:'Brush Script MT'">Brush Script MT</span> <br /><span style="font-size: 150%; font-family:'Lucida Handwriting'">Lucida Handwriting</span>  （个人最喜欢的一种英语书写方式） |
+| Fantasy             | <span style="font-size: 150%; font-family:'Papyrus'"> Papyrus</span> |
+
+::: warning
+
+如果定义字体的话，需要准备多个备选字体，以确保浏览器或者操作系统之间的最大兼容性
+
+:::
+
+### 7.2 字体大小
+
+文字大小可以使用像素单位，也可以使用基准单位 （em）
+
+1em 等于当前字体大小。浏览器中的默认文本大小为 16 像素。因此，1em 的默认大小是 16px。
+
+例如下面代码：像素单位和基准单位可以互换
+
+```css
+h1 {
+  font-size: 2.5em; /* 40px/16=2.5em */
+}
+
+h2 {
+  font-size: 1.875em; /* 30px/16=1.875em */
+}
+
+p {
+  font-size: 0.875em; /* 14px/16=0.875em */
+}
+```
+
+如果想字体大小适用于所有浏览器，则需要为 `<body>` 元素设置默认字体的大小百分比。例如下面代码：
+
+```css
+body {
+  font-size: 100%;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+h2 {
+  font-size: 1.875em;
+}
+
+p {
+  font-size: 0.875em;
+}
+```
+
+文本大小可以设置视口宽度 `vw` 单位，即字体占用窗口的多少。这样，文本大小将跟随浏览器窗口的大小，例如下面代码：
+
+```html
+<h1 style="font-size:10vw">Hello World</h1>
+```
+
+显示效果如下：改变浏览器的窗口大小查看效果。
+
+<span style="font-size:10vw">Hello World</span>
+
+### 7.3 字体缩写
+
+`font`属性是以下的简写属性：
+
+- `font-style`
+- `font-variant`
+- `font-weight`
+- **`font-size/line-height`**
+- **`font-family`**
+
+**注意：** `font-size` 和 `font-family` 是必需的。如果缺少其他值之一，则使用它们的默认值。
+
+例如下面代码：
+
++ 斜体
+
++ 全部字母小写
++ 加粗
++ 字体大小 12 px / 字体行高 30 px
++ 字体 Georgia 和 serif
+
+```css
+p.b {
+  font: italic small-caps bold 12px/30px Georgia, serif;
+}
+```
+
+## 八、CSS链接
+
+可以设置 `cursor` 属性当鼠标移动到链接上面，鼠标光标的样式。
+
+例如下面代码：
+
+```html
+<span style="cursor: auto">auto</span><br>
+<span style="cursor: crosshair">crosshair</span><br>
+<span style="cursor: default">default</span><br>
+<span style="cursor: e-resize">e-resize</span><br>
+<span style="cursor: help">help</span><br>
+<span style="cursor: move">move</span><br>
+<span style="cursor: n-resize">n-resize</span><br>
+<span style="cursor: ne-resize">ne-resize</span><br>
+<span style="cursor: nw-resize">nw-resize</span><br>
+<span style="cursor: pointer">pointer</span><br>
+<span style="cursor: progress">progress</span><br>
+<span style="cursor: s-resize">s-resize</span><br>
+<span style="cursor: se-resize">se-resize</span><br>
+<span style="cursor: sw-resize">sw-resize</span><br>
+<span style="cursor: text">text</span><br>
+<span style="cursor: w-resize">w-resize</span><br>
+<span style="cursor: wait">wait</span>
+```
+
+下面为代码演示：
+
++ <span style="cursor: auto">auto 自动</span>
++ <span style="cursor: crosshair">crosshair 十字准星</span> 
++ <span style="cursor: default">default 默认</span>
++ <span style="cursor: e-resize">e-resize 东向准星</span>
++ <span style="cursor: w-resize">w-resize 西向准星</span>
++ <span style="cursor: n-resize">n-resize 北向准星</span>
++ <span style="cursor: s-resize">s-resize 南向准星</span>
++ <span style="cursor: ne-resize">ne-resize 东北准星</span>
++ <span style="cursor: nw-resize">nw-resize 西北准星</span>
++ <span style="cursor: se-resize">se-resize 东南准星</span>
++ <span style="cursor: sw-resize">sw-resize 西南准星</span>
++ <span style="cursor: help">help 帮助准星</span>
++ <span style="cursor: move">move 移动准星</span>
++ <span style="cursor: pointer">pointer 点击准星</span>
++ <span style="cursor: progress">progress 加载准星</span>
++ <span style="cursor: text">text 输入准星</span>
++ <span style="cursor: wait">wait 等待准星</span>
+
+## 九、CSS列表
+
+列表有一个 `list-style-position` 属性，该属性设置列表是在文字里面还是外面。
+
+**属性值：`inside` —— 文字里面；`outside` ——文字外面（默认值）**
+
+虽然列表放到文字里面，但原来的边距不会改变。所以 `inside` 的效果是 `outside` 的基础上再缩进。例如下面代码。
+
+::: details 详细代码
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      ul.a {
+        list-style-position: outside;
+      }
+
+      ul.b {
+        list-style-position: inside;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>The list-style-position Property</h1>
+
+    <h2>list-style-position: outside (default):</h2>
+    <ul class="a">
+      <li>
+        Coffee - A brewed drink prepared from roasted coffee beans, which are
+        the seeds of berries from the Coffea plant
+      </li>
+      <li>
+        Tea - An aromatic beverage commonly prepared by pouring hot or boiling
+        water over cured leaves of the Camellia sinensis, an evergreen shrub
+        (bush) native to Asia
+      </li>
+    </ul>
+
+    <h2>list-style-position: inside:</h2>
+    <ul class="b">
+      <li>
+        Coffee - A brewed drink prepared from roasted coffee beans, which are
+        the seeds of berries from the Coffea plant
+      </li>
+      <li>
+        Tea - An aromatic beverage commonly prepared by pouring hot or boiling
+        water over cured leaves of the Camellia sinensis, an evergreen shrub
+        (bush) native to Asia
+      </li>
+    </ul>
+  </body>
+</html>
+```
+
+:::
+
+`outside` 代码演示：
+
+<ul style="list-style-position: outside;">
+  <li>
+	Coffee - A brewed drink prepared from roasted coffee beans, which are
+	the seeds of berries from the Coffea plant
+  </li>
+  <li>
+	Tea - An aromatic beverage commonly prepared by pouring hot or boiling
+	water over cured leaves of the Camellia sinensis, an evergreen shrub
+	(bush) native to Asia
+  </li>
+</ul>
+
+`inside` 代码演示：
+
+<ul style="list-style-position: inside;">
+  <li>
+	Coffee - A brewed drink prepared from roasted coffee beans, which are
+	the seeds of berries from the Coffea plant
+  </li>
+  <li>
+	Tea - An aromatic beverage commonly prepared by pouring hot or boiling
+	water over cured leaves of the Camellia sinensis, an evergreen shrub
+	(bush) native to Asia
+  </li>
+</ul>
+
+列表速记的属性分别为：
+
++ `list-style-image`（将图像指定为列表项标记）
+
+- `list-style-type`（如果指定了 `list-style-image`，如果由于某种原因无法显示图像，将显示该属性的值）
+- `list-style-position`（指定列表项标记应出现在内容流内部还是外部）
+
+## 十、CSS表格
+
+表格可以设置以下属性：
+
+| 属性                                                         | 描述                                                         |
+| :----------------------------------------------------------- | :----------------------------------------------------------- |
+| [border](https://www.w3schools.com/cssref/pr_border.asp)     | 设置边框缩写 【 `border-width` | `border-style` 必需的 | `border-color` 】 |
+| [border-collapse](https://www.w3schools.com/cssref/pr_border-collapse.asp) | 设置边框是否重合【separate\|collapse】                       |
+| [border-spacing](https://www.w3schools.com/cssref/pr_border-spacing.asp) | 设置边框之间的空隙【length 左右 \| length 上下】，           |
+| [caption-side](https://www.w3schools.com/cssref/pr_tab_caption-side.asp) | 设置标题在表格上方还是下方 【top \| bottom】                 |
+| [empty-cells](https://www.w3schools.com/cssref/pr_tab_empty-cells.asp) | 设置表格中的空格是否显示边框和背景 【show \| hide】          |
+| [table-layout](https://www.w3schools.com/cssref/pr_tab_table-layout.asp) | 设置单元格宽度算法【auto 随着内容变化 \| fixed 固定宽度】    |
+
+## 十一、CSS显示
+
+| Property                                                     | 描述                                  |
+| :----------------------------------------------------------- | :------------------------------------ |
+| [display](https://www.w3schools.com/cssref/pr_class_display.asp) | 设置元素是否存在【none \| 其他值】    |
+| [visibility](https://www.w3schools.com/cssref/pr_class_visibility.asp) | 设置元素是否显示【visible \| hidden】 |
+
+## 十二、CSS定位
+
+CSS 定位有五种：
+
+- `static` ：静态，默认值
+- `relative` ：相对定位，相对于其原始位置定位
+- `fixed` ：固定定位，一直在宽口的一个位置里
+- `absolute` ：绝对定位，相对于设置了 `relative` 属性的父元素定位，如果都没有设置则相对于 `body` 定位。
+- `sticky` ：粘性定位，当元素将要超出宽口页面时，固定在页面最上面
+
+定位时会使用到四个属性来进行具体定位：
+
++ `bottom` ：以底部为负半轴，进行偏移。`-5px` 代表向下偏移 5px ；`5px` 代表向上偏移 5px
++ `top` ：以顶部为负半轴，进行偏移
++ `right` ：以右边为负半轴，进行偏移
++ `left` ：以左边为负半轴，进行偏移
+
+另外还有一个属性可以裁剪图片：
+
+- `clip` 属性允许您指定一个矩形来裁剪绝对定位的元素。
+- 【 auto 自动 | (top, right, bottom, left) 矩形的】
+
+例如，`rect(10px,100px,50px,10px)` 代表矩形位置——
+
++ top 和 left 组合成矩形开始裁剪的位置，即 在 10px，10px 开始裁剪。
++ right 代表矩形向右长度 100px
++ bottom 代表矩形向下长度 50 px
+
+## 十三、CSS浮动
+
+### （1）浮动对齐
+
+当两个元素浮动在同一行时，高度不会自动对齐。除非直接设置高度，但这样子过于死板，这时需要使用到 `Flexbox` ，这个之后会详细描述。
+
+例如下面代码：第 5 ~ 8 行，装浮动元素的容器设置为 `flex` ，并设置 `flex-wrap` 为 `nowrap`
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .flex-container {
+        display: flex;
+        flex-wrap: nowrap;
+      }
+
+      .flex-container .box {
+        width: 50%;
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex-container">
+      <div class="box">Box 1 - This is some text to make sure that the content gets really tall. This is some text to make sure that the content gets really tall.</div>
+      <div class="box">Box 2 - My height will follow Box 1.</div>
+    </div>
+
+  </body>
+</html>
+```
+
+### （2）导航栏
+
+一般也会使用浮动来制作导航栏。
+
+例如水平导航栏：
+
+```html {13-25}
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+      }
+
+      /* 设置左浮动 */
+      li {
+        float: left;
+      }
+
+      /* 设置内联块 */
+      li a {
+        display: inline-block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+
+      li a:hover {
+        background-color: #111;
+      }
+
+      .active {
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+
+    <ul>
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+
+  </body>
+</html>
+```
+
+例如垂直导航栏：
+
+```html {17-22,51-74}
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        background-color: white;
+      }
+
+      .column {
+        float: left;
+        padding: 15px;
+      }
+
+      /* 清楚浮动并对齐 */
+      .clearfix::after {
+        content: '';
+        clear: both;
+        display: table;
+      }
+
+      .menu {
+        width: 25%;
+      }
+
+      .content {
+        width: 75%;
+      }
+
+      .menu ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .menu li {
+        padding: 8px;
+        margin-bottom: 8px;
+        background-color: #33b5e5;
+        color: #ffffff;
+      }
+
+      .menu li:hover {
+        background-color: #0099cc;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="clearfix">
+      <!-- 侧边栏 -->
+      <div class="column menu">
+        <ul>
+          <li>The Flight</li>
+          <li>The City</li>
+          <li>The Island</li>
+          <li>The Food</li>
+        </ul>
+      </div>
+
+      <!-- 主体内容 -->
+      <div class="column content">
+        <h1>The City</h1>
+        <p>
+          Chania is the capital of the Chania region on the island of Crete. The
+          city can be divided in two parts, the old town and the modern city.
+        </p>
+        <p>
+          You will learn more about web layout and responsive web pages in a
+          later chapter.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
+```
+
+## 十四、CSS伪类和伪元素
+
++ 伪类：伪类用于定义元素的特殊状态和定义指定位置的元素
+
+例如：`a:link` ——定义 `<a>` 标签点击后的样式
+
+`a:first-child`  ——定义第一个 `<a>` 元素的样式。
+
+有一个很好的例子使用 `:focus` ，当用户点击文本框后产生动画效果：
+
+::: normal-demo 测试
+
+```html
+<input type="text" value="John">
+```
+
+```js
+
+```
+
+```css
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+input[type=text]:focus {
+  border: 3px solid #555;
+}
+```
+
+```json
+// 配置 (可选)
+{
+  "jsLib": [
+    ...
+  ],
+  "cssLib":[
+    ...
+  ]
+}
+```
+
+:::
+
+
++ 伪元素：伪元素用于设置元素的 **指定部分** 的样式。所有伪元素如下表所示。
+
+| 选择器                                                       | 例子              | 例子描述                         |
+| :----------------------------------------------------------- | :---------------- | :------------------------------- |
+| [::after](https://www.w3schools.com/cssref/sel_after.asp)    | `p::after`        | 选择在每个 `<p>` 元素 **最后面** |
+| [::before](https://www.w3schools.com/cssref/sel_before.asp)  | `p::before`       | 选择在每个 `<p>` 元素 **最前面** |
+| [::first-letter](https://www.w3schools.com/cssref/sel_firstletter.asp) | `p::first-letter` | 选择每个 `<p>` 元素第一个字母    |
+| [::first-line](https://www.w3schools.com/cssref/sel_firstline.asp) | `p::first-line`   | 选择每个 `<p>` 元素第一行内容    |
+| [::marker](https://www.w3schools.com/cssref/sel_marker.asp)  | `::marker`        | 选择每个列表的列表项             |
+| [::selection](https://www.w3schools.com/cssref/sel_selection.asp) | `p::selection`    | 更改当使用鼠标选择文字的样式     |
+
+::: warning
+
+**双冒号表示法 ——** `::first-line`与 `:first-line`
+
+双冒号取代了 CSS3 中伪元素的单冒号表示法。这是 W3C 试图区分 **伪类** 和**伪元素**的尝试。
+
+单冒号语法用于 CSS2 和 CSS1 中的伪类和伪元素。
+
+:::
+

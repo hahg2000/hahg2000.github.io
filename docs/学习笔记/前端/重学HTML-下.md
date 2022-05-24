@@ -1,6 +1,6 @@
 # 重学HTML-下
 
-## 一、表单
+## 一、表单以杂项
 
 ### 1.1 `<form>` 
 
@@ -559,3 +559,227 @@ details.addEventListener('toggle', event => {
   }
 });
 ```
+
+## 二、面试题
+
+### 2.1 src和href的区别
+
++ **使用的标签不一致**
+  + `<script>` 、 `<img>` 使用 `src` 属性。
+  
+  + `<a>` 、`<link>` 使用 `href` 属性。
+  
++ **加载的情况不一致**
+  + `<link>` 在加载时，页面的 **解析** 不会暂停（渲染可能会暂停，因为浏览器需要样式来绘制和渲染页面）
+  + 在 HTML 5 之前， `<img>` 和 `<script>` 加载 **都会导致页面的加载暂停**，直到浏览器获取、编译和执行文件。
+  + 在 HTML 5 之后，`<script>` 多了两个属性——`async` 和 `defer`
+    +  `async` ：**不会阻塞页面渲染**，而是直接下载然后运行。这样脚本的运行次序就无法控制，只是脚本不会阻止剩余页面的显示。
+    + `defer` ：脚本将按照在页面中 **出现的顺序加载和运行**，一般用于下面的文件需要使用到上面文件的内容。
+
+该问题参考链接：【https://stackoverflow.com/questions/3395359/difference-between-src-and-href】
+
+### 2.2 对HTML语义化的理解
+
+语义化就是在合适的位置使用合适的标签，例如标题使用 `h1~h6` 。
+
+语义化的优点如下：
+
+- **更适合搜索引擎的爬虫爬取有效信息，有利于 SEO。**
+- **对开发者友好，增强了可读性，结构更加清晰。**（一层又一层的 `<div>` 就算加上了注释都不太好看）
+
+```html
+<article> 表示页面里面一段完整的内容，类似于文章
+<aside> 网页级别的<aside>，可以用来放置侧边栏；文章级别的<aside>，可以用来放置补充信息、评论或注释
+<details> 详细信息展现元素
+<figcaption> 在<figure>里放置图片的相关信息
+<figure> 图像区域，将图像和相关信息封装在一起
+<footer> 页尾
+<header> 页眉
+<main> 正文内容
+<mark> 高亮文本，荧光笔特效
+<nav>	导航栏
+<section> 在文档里面表示一个章节
+<summary> 折叠内容的标题
+<time> 表示日期
+```
+
+### 2.3 DOCTYPE(文档类型) 的作用
+
+DOCTYPE 描述了将在您的页面中使用的是 HTML，而且还确定浏览器如何呈现页面。
+
+不包含 DOCTYPE 或包含不正确的 DOCTYPE 可能会触发 **奇怪模式**。奇怪模式和标准模式的区别：
+
++ 一个显着区别是对 CSS [Internet Explorer 框模型错误](https://en.wikipedia.org/wiki/Internet_Explorer_box_model_bug) 的处理。
+  + Internet Explorer 使用一种算法来确定元素框的宽度，这与 CSS 规范中详述的算法相冲突。
++ 内联内容的垂直对齐方式
++ 没有实现表格内字体样式的继承
+
+所以只有正确的声明 DOCTYPE ，页面才会正确的显示。
+
+```html
+<!DOCTYPE html>
+```
+
+参考链接：
+
++ https://stackoverflow.com/questions/414891/what-is-doctype
+
++ https://en.wikipedia.org/wiki/Quirks_mode#cite_ref-3
+
+### 2.4 常用的meta标签有哪些
+
+1. `charset`：用来指定网页的编码方式。`<meta charset="utf-8">`
+2. `name` 与 `content` ：两个一起使用的属性，**可以标注网页的一些信息**。`<meta name="author" content="张三">`
+3. `http-equiv` 与 `content` ：`http-equiv` 属性用来**覆盖 HTTP 回应的头信息字段**，`content` 属性是**对应的字段内容** 
+
+### 2.5 img的srcset属性的作用
+
+其实 `srcset` 里面的值有不同的组合，但本质都是 **显示不同的图片**。
+
++ 指定像素密度：
+
+```html
+<img srcset="foo-320w.jpg,
+             foo-480w.jpg 1.5x,
+             foo-640w.jpg 2x"
+     src="foo-640w.jpg">
+```
+
++ 与 `size` 属性一起使用，指定设备宽度
+
+```html
+<img sizes="(max-width: 440px) 100vw,
+            (max-width: 900px) 33vw,
+            254px"
+     srcset="foo-160.jpg 160w,
+             foo-320.jpg 320w,
+             foo-640.jpg 640w,
+             foo-1280.jpg 1280w"     
+     src="foo-1280.jpg">
+```
+
++ `<picture>` 里的 `<source>` 和 `<img>` 使用，指定不同组合的设备。
+
+```html
+<picture>
+  <source srcset="homepage-person@desktop.png,
+                  homepage-person@desktop-2x.png 2x"
+          media="(min-width: 990px)">
+  <source srcset="homepage-person@tablet.png,
+                  homepage-person@tablet-2x.png 2x"
+          media="(min-width: 750px)">
+  <img srcset="homepage-person@mobile.png,
+               homepage-person@mobile-2x.png 2x"
+       alt="Shopify Merchant, Corrine Anestopoulos">
+</picture>
+```
+
+### 2.6 说一下 web worker
+
+web work 解决的是，在加载高运算的 Javascript 文件时，出现的页面冻结（不响应）问题。
+
+**这样就需要额外新建一个进程，单独计算数据**。因为是额外进程，所以不能直接操作 DOM ，只能将数据传输到主进程中。
+
+主进程启动额外进程：
+
+```
+
+```
+
+### 2.7 浏览器是如何对 HTML5 的离线储存资源进行管理和加载
+
+这个需要使用到 `manifest` 属性，但已被弃用。详情参考：【https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html/manifest】
+
+有关 HTTP 缓存：详情参考【https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching】
+
+有两种缓存类型：
+
++ **共享缓存** ：指的是存储以供多个用户重复使用的缓存。
++ **私有缓存** ：私有缓存专用于单个用户。
+
+---
+
+有两种存放缓存的位置：
+
++ 私人浏览器缓存：
+  + **私有缓存专用于单个用户。**指的是浏览器中的 “ 缓存 ”。浏览器缓存 **保存用户通过 HTTP 下载的所有文档**。此缓存用于使访问的文档可用于 **后退 / 前进导航、保存、作为源查看** 等，而无需额外访问服务器。
+
++ 共享代理缓存：
+  + **共享缓存是存储以供多个用户重用的缓存。**例如，互联网服务提供商 (ISP) 或您的公司将 Web 代理设置为本地网络基础架构的一部分，可以服务许多用户，以便多次重复使用常用资源，从而减少网络流量和延迟。
+
+---
+
+控制缓存由 **请求标头（Request header）** 和 **响应标头（Response header）** 一起控制。
+
+标头有以下属性：
+
+第一个：`Cache-control` 属性：HTTP/1.1 通用头字段用于指定请求和响应中缓存机制的指令。使用此标头通过它提供的 **各种类型的指令** 来定义您的缓存策略。指令类型如下：
+
++ `no-store` ：**不存储有关客户端请求或服务器响应的任何内容**。每次都会向服务器发送一个请求，并下载一个完整的响应。
++ `no-cache` ：其代表可以存储在缓存中，但在 **每次** 重用缓存之前必须与源服务器进行验证。
++ `public` ：表明响应可以被任何缓存缓存。
++ `private` ：表示响应仅供单个用户使用，不得由共享缓存存储。
+
++ `max-age=N` ：生成响应后，**在 N 秒之前保持有效状态**。
+  + 表示缓存可以存储此响应，并在有效状态时，可以将缓存重用于后续请求。
+  + `max-age` 不是收到响应后经过的时间，而是 **在源服务器上生成响应后所经过的时间**
+  + 如果其他缓存将响应存储 100 秒，**将使用 `Age` 响应头字段表示**，浏览器缓存将从其新鲜生命周期中扣除 100 秒。
+
+```http
+Cache-Control: max-age=604800
+Age: 100
+```
+
++ `s-maxage`
+  + 其指示响应的新鲜时间（类似于`max-age`），但它特定于共享缓存，当有这个属性时 `max-age` 将会被忽略。
++ `must-revalidate`
+  + 代表可以存储在缓存中，并且可以在新鲜时重用。如果响应变得陈旧，则必须在重用之前与源服务器进行验证。
+
+第二个：`ETag` ：当浏览器发现过期的缓存响应时，它可以向服务器发送一个小令牌（通常是 **文件内容的哈希**）来检查文件是否已更改。如果服务器返回了相同的令牌，那么说明文件没有改动，无需重新下载。
+
+第三个：`Last-Modified` ：此标头的用途与 `ETag` 相同，但它通过 **比较时间** 来确定资源是否已更改，而不是像 `ETag` 那样通过比较内容。
+
+通过设置 `ETag` 或 `Last-Modified` ，您可以让重新验证请求更加高效。
+
+### 2.8 Canvas和SVG的区别
+
++ canvas 元素是HTML5的一部分，允许对 **2D 形状** 和 **位图图像** 进行动态、可编写脚本的渲染。它是一个更新位图的低级程序模型。HTML5 Canvas 还有助于制作 2D 游戏。
++ 可缩放矢量图形( Scalable Vector Graphics SVG ) 是一种**基于 XML** 的 **矢量图像格式**，用于支持交互性和动画的二维图形
+
+其两个的区别如下：参考链接【https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/samples/gg193983(v=vs.85)?redirectedfrom=MSDN】
+
+| Canvas                                           | SVG                                                          |
+| :----------------------------------------------- | :----------------------------------------------------------- |
+| 基于像素 (Dynamic .png)                          | 基于形状                                                     |
+| 单个 HTML 元素                                   | 多个图形元素，将成为 DOM 的一部分                            |
+| 只能通过 Javascript 改变                         | 可以使用 CSS 和 Javascript 改变                              |
+| 事件模型/用户交互是细粒度的 ，使用 (x,y) 来表示  | 事件模型/用户交互是抽象的，使用 (rect, path) 来表示          |
+| 在小表面绘制大量对象（>10k），表现更好。例如地图 | 在大表面绘制少量对象（<10k），表现更好。例如保真、复杂的图形，如建筑和工程图、组织结构图、生物图。 |
+
+以下内容参考链接：【https://www.sitepoint.com/canvas-vs-svg/】
+
++ 立即模式和保留模式：表格中的第二点。
+  + 立即模式为 `Canvas` ，一旦您的绘图放在画布上，画布就会停止跟踪它，不会生成 DOM，从而减少了维护绘图内部模型所需的额外内存。
+  + 保留模式为 `SVG` ，您绘制的每个对象都会添加到浏览器的内部模型中。
++ `Canvas` 与 `SVG` 的选择：如果表面有过多的对象，`SVG` 浏览器的内部模型就会很庞大，所以在有过多的对象时，使用 `Canvas` 。
+
+### 2.9 渐进增强和优雅降级之间的区别
+
+渐进增强和优雅降级都是网页设计的一种策略，详细参考【https://en.wikipedia.org/wiki/Progressive_enhancement】：
+
++ 渐进增强（Progressive enhancement）：它首先强调网页内容，允许每个人访问网页的 **基本内容和功能**，而具有 **更好的浏览器或更快的网络** 的用户会收到增强版。
+
+也就是说，渐进增强主要关注于 HTML 的加载，CSS 和 Javascript 就算不加载也可以满足基本使用，显示的是黑白蓝页面。（在 2015年 之前，网络没那么发达的时候，就会经常看到这种页面）
+
+渐进增强策略包含以下核心原则：
+
++ 所有网络浏览器都应该可以访问基本内容和功能。
+
++  HTML 语义标记包含所有内容。
++ 增强的布局由外部链接的 CSS 提供。
++ 增强的行为由外部链接的 JavaScript 提供
+
+---
+
++ 优雅降级（Graceful degradation）：尝试构建一个可在 **最新浏览器** 中运行的现代网站，然而在旧浏览器中需要回退，回退虽然显示效果不佳，但仍可提供必要的内容和功能。
+
