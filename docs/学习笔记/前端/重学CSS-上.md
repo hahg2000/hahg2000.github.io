@@ -783,3 +783,14 @@ input[type=text]:focus {
 
 :::
 
+## 十五、属性选择器
+
+| 选择器                                                       | 解释                                             | 例子                 | 例子描述                                      |
+| :----------------------------------------------------------- | ------------------------------------------------ | :------------------- | :----------------------------------------------------------- |
+| [attribute](https://www.w3schools.com/cssref/sel_attribute.asp) | 选择拥有某个属性的元素                           | `[target]`           | 选择拥有 target 属性的元素                                   |
+| [attribute=value](https://www.w3schools.com/cssref/sel_attribute_value.asp) | 选择属性值是指定值的元素                         | `[target=_blank]`    | 选择 target 属性值为 \_blank 的元素                           |
+| [attribute~=value](https://www.w3schools.com/cssref/sel_attribute_value_contains.asp) | 选择属性值里拥有指定单词的元素                   | `[title~=flower]`    | 选择 title 属性值有 flower 单词的元素，例如 summer flower    |
+| [attribute\|=value](https://www.w3schools.com/cssref/sel_attribute_value_lang.asp) | 选择属性值里拥有指定值或者使用连词符号开头的元素 | `[lang\|=en]`       | 选择 lang 属性值是 en 或者使用连词 en 开头的元素。例如 en-US |
+| [attribute\^=value](https://www.w3schools.com/cssref/sel_attr_begin.asp) | 选择属性值是指定值开头的元素                     | `a[href^="https"]` | 选择是 a 标签且 href 属性值是 https 开头的元素                  |
+| [attribute\$=value](https://www.w3schools.com/cssref/sel_attr_end.asp)     | 选择属性值是指定值结尾的元素 |`a[href$=".pdf"]`|选择是 a 标签且 href 属性值是 pdf 结尾|
+| [attribute\*=value](https://www.w3schools.com/cssref/sel_attr_contain.asp) | 选择属性值包含指定值的元素 | `a[href*="te"]` | 选择是 a 标签且 href 属性值包含 te 的元素，例如 `test` 、`mytest` |

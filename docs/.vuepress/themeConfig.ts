@@ -95,11 +95,12 @@ export default defineThemeConfig({
     // },
 
     mdEnhance: {
-      enableAll: true,
+      // enableAll: fa,
       demo: true,
-      presentation: {
-        plugins: ['highlight', 'math', 'search', 'notes', 'zoom'],
-      },
+      mark: true,
+      // presentation: {
+      //   plugins: ['highlight', 'math', 'search', 'notes', 'zoom'],
+      // },
     },
   },
 })
