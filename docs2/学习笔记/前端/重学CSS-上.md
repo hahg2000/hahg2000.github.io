@@ -1,4 +1,4 @@
-重学CSS-上
+# 重学CSS-上
 
 ## 一、CSS颜色
 
@@ -408,83 +408,42 @@ p.b {
 
 虽然列表放到文字里面，但原来的边距不会改变。所以 `inside` 的效果是 `outside` 的基础上再缩进。例如下面代码。
 
-::: details 详细代码
+:::  normal-demo outside代码演示
 
 ```html
-<!DOCTYPE html>
-<html>
-  <head>
-    <style>
-      ul.a {
-        list-style-position: outside;
-      }
-
-      ul.b {
-        list-style-position: inside;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>The list-style-position Property</h1>
-
-    <h2>list-style-position: outside (default):</h2>
-    <ul class="a">
-      <li>
-        Coffee - A brewed drink prepared from roasted coffee beans, which are
-        the seeds of berries from the Coffea plant
-      </li>
-      <li>
-        Tea - An aromatic beverage commonly prepared by pouring hot or boiling
-        water over cured leaves of the Camellia sinensis, an evergreen shrub
-        (bush) native to Asia
-      </li>
-    </ul>
-
-    <h2>list-style-position: inside:</h2>
-    <ul class="b">
-      <li>
-        Coffee - A brewed drink prepared from roasted coffee beans, which are
-        the seeds of berries from the Coffea plant
-      </li>
-      <li>
-        Tea - An aromatic beverage commonly prepared by pouring hot or boiling
-        water over cured leaves of the Camellia sinensis, an evergreen shrub
-        (bush) native to Asia
-      </li>
-    </ul>
-  </body>
-</html>
+<ul style="list-style-position: outside;">
+  <li>
+    Coffee - A brewed drink prepared from roasted coffee beans, which are
+    the seeds of berries from the Coffea plant
+  </li>
+  <li>
+    Tea - An aromatic beverage commonly prepared by pouring hot or boiling
+    water over cured leaves of the Camellia sinensis, an evergreen shrub
+    (bush) native to Asia
+  </li>
+</ul>
 ```
 
 :::
 
-`outside` 代码演示：
+::: normal-demo inside代码演示
 
-<ul style="list-style-position: outside;">
-  <li>
-	Coffee - A brewed drink prepared from roasted coffee beans, which are
-	the seeds of berries from the Coffea plant
-  </li>
-  <li>
-	Tea - An aromatic beverage commonly prepared by pouring hot or boiling
-	water over cured leaves of the Camellia sinensis, an evergreen shrub
-	(bush) native to Asia
-  </li>
-</ul>
-
-`inside` 代码演示：
-
+```html
 <ul style="list-style-position: inside;">
   <li>
-	Coffee - A brewed drink prepared from roasted coffee beans, which are
-	the seeds of berries from the Coffea plant
+    Coffee - A brewed drink prepared from roasted coffee beans, which are
+    the seeds of berries from the Coffea plant
   </li>
   <li>
-	Tea - An aromatic beverage commonly prepared by pouring hot or boiling
-	water over cured leaves of the Camellia sinensis, an evergreen shrub
-	(bush) native to Asia
+    Tea - An aromatic beverage commonly prepared by pouring hot or boiling
+    water over cured leaves of the Camellia sinensis, an evergreen shrub
+    (bush) native to Asia
   </li>
 </ul>
+```
+
+:::
+
 
 列表速记的属性分别为：
 
@@ -581,135 +540,126 @@ CSS 定位有五种：
 
 例如水平导航栏：
 
-```html {13-25}
-<!DOCTYPE html>
-<html>
-  <head>
-    <style>
-      ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color: #333;
-      }
+::: normal-demo 水平导航栏
 
-      /* 设置左浮动 */
-      li {
-        float: left;
-      }
-
-      /* 设置内联块 */
-      li a {
-        display: inline-block;
-        color: white;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-      }
-
-      li a:hover {
-        background-color: #111;
-      }
-
-      .active {
-        background-color: red;
-      }
-    </style>
-  </head>
-  <body>
-
-    <ul>
-      <li><a href="#home" class="active">Home</a></li>
-      <li><a href="#news">News</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#about">About</a></li>
-    </ul>
-
-  </body>
-</html>
+```html
+<ul>
+  <li><a href="#home" class="active">Home</a></li>
+  <li><a href="#news">News</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#about">About</a></li>
+</ul>
 ```
+
+```css
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+/* 设置左浮动 */
+li {
+  float: left;
+}
+
+/* 设置内联块 */
+li a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+
+.active {
+  background-color: red;
+}
+```
+
+:::
 
 例如垂直导航栏：
 
-```html {17-22,51-74}
-<!DOCTYPE html>
-<html>
-  <head>
-    <style>
-      * {
-        box-sizing: border-box;
-      }
-      body {
-        background-color: white;
-      }
+::: normal-demo 垂直导航栏
 
-      .column {
-        float: left;
-        padding: 15px;
-      }
+```html
+<div class="clearfix">
+  <!-- 侧边栏 -->
+  <div class="column menu">
+    <ul>
+      <li>The Flight</li>
+      <li>The City</li>
+      <li>The Island</li>
+      <li>The Food</li>
+    </ul>
+  </div>
 
-      /* 清楚浮动并对齐 */
-      .clearfix::after {
-        content: '';
-        clear: both;
-        display: table;
-      }
-
-      .menu {
-        width: 25%;
-      }
-
-      .content {
-        width: 75%;
-      }
-
-      .menu ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-      }
-
-      .menu li {
-        padding: 8px;
-        margin-bottom: 8px;
-        background-color: #33b5e5;
-        color: #ffffff;
-      }
-
-      .menu li:hover {
-        background-color: #0099cc;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="clearfix">
-      <!-- 侧边栏 -->
-      <div class="column menu">
-        <ul>
-          <li>The Flight</li>
-          <li>The City</li>
-          <li>The Island</li>
-          <li>The Food</li>
-        </ul>
-      </div>
-
-      <!-- 主体内容 -->
-      <div class="column content">
-        <h1>The City</h1>
-        <p>
-          Chania is the capital of the Chania region on the island of Crete. The
-          city can be divided in two parts, the old town and the modern city.
-        </p>
-        <p>
-          You will learn more about web layout and responsive web pages in a
-          later chapter.
-        </p>
-      </div>
-    </div>
-  </body>
-</html>
+  <!-- 主体内容 -->
+  <div class="column content">
+    <h1>The City</h1>
+    <p>
+      Chania is the capital of the Chania region on the island of Crete. The
+      city can be divided in two parts, the old town and the modern city.
+    </p>
+    <p>
+      You will learn more about web layout and responsive web pages in a
+      later chapter.
+    </p>
+  </div>
+</div>
 ```
+
+```css
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  padding: 15px;
+}
+
+/* 清楚浮动并对齐 */
+.clearfix::after {
+  content: '';
+  clear: both;
+  display: table;
+}
+
+.menu {
+  width: 25%;
+}
+
+.content {
+  width: 75%;
+}
+
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  padding: 8px;
+  margin-bottom: 8px;
+  background-color: #33b5e5;
+  color: #ffffff;
+}
+
+.menu li:hover {
+  background-color: #0099cc;
+}
+```
+
+::: 
 
 ## 十四、CSS伪类和伪元素
 
@@ -719,17 +669,14 @@ CSS 定位有五种：
 
 `a:first-child`  ——定义第一个 `<a>` 元素的样式。
 
-有一个很好的例子使用 `:focus` ，当用户点击文本框后产生动画效果：
+有一个很好的例子使用 `:focus` ，当用户点击文本框后产生文本框边框动画效果：
 
-::: normal-demo 测试
+::: normal-demo 文本框边框动画
 
 ```html
 <input type="text" value="John">
 ```
 
-```js
-
-```
 
 ```css
 input[type=text] {
@@ -746,19 +693,6 @@ input[type=text]:focus {
   border: 3px solid #555;
 }
 ```
-
-```json
-// 配置 (可选)
-{
-  "jsLib": [
-    ...
-  ],
-  "cssLib":[
-    ...
-  ]
-}
-```
-
 :::
 
 
@@ -794,3 +728,315 @@ input[type=text]:focus {
 | [attribute\^=value](https://www.w3schools.com/cssref/sel_attr_begin.asp) | 选择属性值是指定值开头的元素                     | `a[href^="https"]` | 选择是 a 标签且 href 属性值是 https 开头的元素                  |
 | [attribute\$=value](https://www.w3schools.com/cssref/sel_attr_end.asp)     | 选择属性值是指定值结尾的元素 |`a[href$=".pdf"]`|选择是 a 标签且 href 属性值是 pdf 结尾|
 | [attribute\*=value](https://www.w3schools.com/cssref/sel_attr_contain.asp) | 选择属性值包含指定值的元素 | `a[href*="te"]` | 选择是 a 标签且 href 属性值包含 te 的元素，例如 `test` 、`mytest` |
+
+## 十六、计数器
+
+我们也可以通过 CSS 来创建编号。使用步骤如下：
+
+1. 在 **需要编号的容器** 定义 `counter-reset` 属性，该属性创建或重置计数器，属性值的第一个单词为计数器变量名，第二个单词为起始数字。下面代码设置变量名为 `section` ，从 3 开始计数（不包括 3 ）。
+
+```css
+.container {
+  counter-reset: section 3;
+}
+```
+
+2. 设置每次递增的数量—— `counter-increment` ；属性值第一单词为计数器变量，第二个为递增的数量。下面代码设置列表每次递增 2。
+
+```css
+h2:before {
+  counter-reset: section;
+  counter-increment: section 2;
+}
+```
+
+3. 设置列表的内容—— `content` ；`counter()` 或 `counters()` 表示计数器变量占位符。下面设置列表内容为 `Section X.`
+
+```css
+h2:before {
+  counter-increment: section 2;
+  content: "Section " counter(section) ". ";
+}
+```
+
+运行效果如下：
+
+::: normal-demo 计数器运行效果
+
+```html
+<div class="container">
+  <h2>HTML Tutorial</h2>
+  <h2>CSS Tutorial</h2>
+  <h2>JavaScript Tutorial</h2>
+  <h2>Bootstrap Tutorial</h2>
+  <h2>SQL Tutorial</h2>
+  <h2>PHP Tutorial</h2>
+</div>
+```
+
+```css
+.container {
+  counter-reset: section 3;
+}
+
+h2:before {
+  counter-increment: section 2;
+  content: "Section " counter(section) ". ";
+}
+```
+
+:::
+
+## 十七、单位
+
+单位分为 **绝对单位** 和 **相对单位**
+
+**绝对单位：**不建议在屏幕上使用绝对长度单位，因为屏幕尺寸变化很大。但是，如果输出介质已知，例如打印布局，则可以使用它们。
+
+| Unit | Description                |
+| :--- | :------------------------- |
+| cm   | 厘米                       |
+| mm   | 毫米                       |
+| in   | 英寸 (1in = 96px = 2.54cm) |
+| px   | 像素 (1px = 1/96th of 1in) |
+| pt   | 点 (1pt = 1/72 of 1in)     |
+| pc   | 派卡 (1pc = 12 pt)         |
+
+相对长度：相对长度单位指定相对于另一个长度属性的长度。相对长度单位在不同的渲染介质之间可以更好地缩放。
+
+| Unit | Description                                               |
+| :--- | :-------------------------------------------------------- |
+| em   | 相对于元素的字体大小 (2em 代表当前字体大小的两倍)         |
+| ex   | 相对于字符 “ x ” 的高度，通常为字体尺寸的一半  (很少使用) |
+| ch   | 相对于 "0" 的宽度                                         |
+| rem  | 相对于根节点的字体大小                                    |
+| vw   | 相对于视窗宽度的 1%                                       |
+| vh   | 相对于视窗高度的 1%                                       |
+| vmin | Relative to 1% of viewport's* smaller dimension           |
+| vmax | Relative to 1% of viewport's* larger dimension            |
+| %    | 相对于父元素                                              |
+
+## 十八、数学函数
+
++ `calc()`  ：括号里填写数学表达式，计算结果为 CSS 里的属性值，里面表达式可以使用 + - * /。
+
+例如下面代码，计算元素的宽度来实现居中显示。
+
+```css {4}
+#div1 {
+  position: absolute;
+  left: 50px;
+  /* 宽度 = 100% - 左偏移距离50px - 右偏移距离50px => 居中显示 */
+  width: calc(100% - 100px);
+}
+```
+
+::: normal-demo 效果展示
+
+```html
+<h1>The calc() Function</h1>
+
+<p>Create a div that stretches across the window, with a 50px gap between both sides of the div and the edges of the window:</p>
+
+<div id="div1">Some text...</div>
+```
+
+```css
+#div1 {
+  position: absolute;
+  left: 50px;
+  width: calc(100% - 100px);
+  border: 1px solid black;
+  background-color: yellow;
+  padding: 10px;
+}
+```
+
+:::
+
++ `max()` 函数：使用括号里的最大值作为属性值
++ `min()` 函数：使用括号里的最小值作为属性值。
+
+（上面两个函数有点像 `min-width` 之类的属性）
+
+## 十九、CSS圆角
+
+`border-radius` 给元素添加圆角，可以有 1 ~ 4 个值。
+
++ 【↖、↗、↘、↙】
++ 【↖、↗ ↙、↘】
++ 【↖ ↘、↗ ↙】
++ 【↖ ↗ ↘ ↙】
+
+::: normal-demo 圆角效果
+
+```html
+<h1>The border-radius Property</h1>
+
+<p>Four values - border-radius: 15px 50px 30px 5px:</p>
+<p id="rcorners1"></p>
+
+<p>Three values - border-radius: 15px 50px 30px:</p>
+<p id="rcorners2"></p>
+
+<p>Two values - border-radius: 15px 50px:</p>
+<p id="rcorners3"></p>
+
+<p>One value - border-radius: 15px:</p>
+<p id="rcorners4"></p>
+```
+
+```css
+#rcorners1 {
+  border-radius: 15px 50px 30px 5px;
+  background: #04aa6d;
+  padding: 20px; 
+  width: 200px;
+  height: 150px; 
+}
+
+#rcorners2 {
+  border-radius: 15px 50px 30px;
+  background: #04aa6d;
+  padding: 20px; 
+  width: 200px;
+  height: 150px; 
+}
+
+#rcorners3 {
+  border-radius: 15px 50px;
+  background: #04aa6d;
+  padding: 20px; 
+  width: 200px;
+  height: 150px; 
+} 
+
+#rcorners4 {
+  border-radius: 15px;
+  background: #04aa6d;
+  padding: 20px; 
+  width: 200px;
+  height: 150px; 
+} 
+```
+
+:::
+
+## 二十、边框图像
+
+使用 CSS `border-image` 属性，您可以将图片设置为元素周围的边框。如果要 `border-image`工作，元素还需要  `border `属性。
+
+`border-image` 属性值有五个值：
+
+| 属性值              | 说明                                                         |
+| ------------------- | ------------------------------------------------------------ |
+| border-image-source | 指定源图片                                                   |
+| border-image-slice  | 指定如何分隔图片，将图片分割成九个部分                       |
+| border-image-width  | 指定展示的图片宽度，注意图片会溢出边框限制                   |
+| border-image-outset | 指定图片往外偏移的长度。可以分别指定上下左右偏移长度。属性值可以不带单位，表示边框的倍数 |
+| border-image-repeat | 指定边框重复的类型。有 stretch 拉伸、repeat 重复、round 挤压、space 松散的 |
+
+## 二十一、CSS 多背景
+
+### （1）基本属性
+
++ 在 CSS 可以设置多个图片作为元素背景。`background-image: url(img_flwr.gif), url(paper.gif);`
++ 也可以在 `background` 属性设置多个图片背景。例如下面代码，两张图片都设置了图片源、图片位置和重复类型
+
+```css
+#example1 {
+  background: url(img_flwr.gif) right bottom no-repeat, url(paper.gif) left top repeat;
+}
+```
+
++ 使用 `background-size` 来设置背景图片的大小。可以使用三个值：
+  + `no-repeat` ：原始大小
+  + `contain` ：宽度和高度尽量撑满元素，所以有些区域会覆盖不到。
+  + `cover` ：图片将覆盖整个元素，所以图片一部分会不可见。
+  + 效果示例：https://www.w3schools.com/css/tryit.asp?filename=trycss3_background-size_contain
+  + 其可以和 `background` 属性一样设置多个值来调整多个背景大小。
+
+### （2）实际使用
+
++ 全尺寸背景图像：在博客中经常使用。其有如下要求：
+  + 用图像填充整个页面（无空白，有空白就很难看了）
+  + 根据需要缩放图像（尽量多得显示背景图片）
+  + 页面居中图片
+  + 不要导致滚动条（只是背景图片，不是显示图片）
+
+所以代码如下：
+
+```css
+html {
+  background: url(img_man.jpg) no-repeat center fixed;
+  background-size: cover;
+}
+```
+
++ `background-origin` ：指定背景图片的起始位置。该属性采用三个不同的值：
+  - `border-box` - 背景图片从 border 边框的左上角开始
+  - `padding-box` - （默认）背景图像从 padding 的左上角开始
+  - `content-box` - 背景图片从内容的左上角开始，不包括 padding
++ `background-clip` ：指定背景的绘画区域。该属性采用三个不同的值：
+  + `border-box` - （默认）背景被绘制到边框
+  + `padding-box` - 背景被绘制到填充，不会绘制到边框
+  + `content-box` - 背景在内容框内绘制，不会绘制到填充
+
+::: normal-demo 背景的绘画区域
+
+```html
+<div id="example1">
+  <p>背景被绘制到边框</p>
+</div>
+
+<div id="example2">
+  <p>背景被绘制到填充，不会绘制到边框</p>
+</div>
+
+<div id="example3">
+  <p>背景在内容框内绘制，不会绘制到填充</p>
+</div>
+```
+
+```css
+#example1 {
+  border: 15px dotted black;
+  padding: 35px;
+  background: orange;
+}
+
+#example2 {
+  border: 15px dotted black;
+  padding: 35px;
+  background: orange;
+  background-clip: padding-box;
+}
+
+#example3 {
+  border: 15px dotted black;
+  padding: 35px;
+  background: orange;
+  background-clip: content-box;
+}
+```
+
+:::
+
+## 二十二、颜色关键词
+
+颜色有三个关键词：
+
++ `transparent` ：使颜色透明，等价于 rgba(0,0,0,0)。
+
++ `currentcolor` 关键字就像一个变量，它保存元素颜色属性的当前值。如果您希望特定颜色在元素或页面中保持一致，就可以使用该关键字。
+
+例如下面代码，设置了 `<div>` 的文本颜色为蓝色，如果边框想和文本一样的颜色，可以使用 `currentcolor` 
+
+```css
+div {
+  color: blue;
+  border: 10px solid currentcolor;
+}
+```
+
++ `inherit` 关键字指定属性应从其父元素继承其值。

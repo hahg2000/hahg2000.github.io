@@ -1,16 +1,16 @@
-import { defineThemeConfig } from 'vuepress-theme-hope'
+import { hopeTheme } from 'vuepress-theme-hope'
 import navbar from './navbar'
 import sidebar from './sidebar'
 
-export default defineThemeConfig({
+export default hopeTheme({
   hostname: 'https://vuepress-theme-hope-v2-demo.mrhope.site',
 
   author: {
     name: 'hahg',
-    // url: 'https://mrhope.site',
+    url: 'https://mrhope.site',
   },
 
-  iconPrefix: 'iconfont icon-',
+  iconAssets: '//at.alicdn.com/t/font_2410206_a0xb9hku9iu.css',
 
   logo: '/logo.svg',
 
@@ -21,7 +21,7 @@ export default defineThemeConfig({
   // navbar
   navbar: navbar,
 
-  // 侧边栏自动生成
+  // sidebar
   sidebar: sidebar,
 
   footer: '默认页脚',
@@ -34,15 +34,42 @@ export default defineThemeConfig({
     name: 'HAHG',
     description: '学渣，二次元，前端学习者',
     intro: '/intro.html',
-    avatar: '/小司头像.png',
-    roundAvatar: true,
     medias: {
-      GitHub: 'https://github.com/hahg2000',
+      Baidu: 'https://example.com',
+      Bitbucket: 'https://example.com',
+      Dingding: 'https://example.com',
+      Discord: 'https://example.com',
+      Dribbble: 'https://example.com',
+      Email: 'https://example.com',
+      Evernote: 'https://example.com',
+      Facebook: 'https://example.com',
+      Flipboard: 'https://example.com',
+      Gitee: 'https://example.com',
+      GitHub: 'https://example.com',
+      Gitlab: 'https://example.com',
+      Gmail: 'https://example.com',
+      Instagram: 'https://example.com',
+      Lines: 'https://example.com',
+      Linkedin: 'https://example.com',
+      Pinterest: 'https://example.com',
+      Pocket: 'https://example.com',
+      QQ: 'https://example.com',
+      Qzone: 'https://example.com',
+      Reddit: 'https://example.com',
+      Rss: 'https://example.com',
       Steam: 'https://example.com',
       Twitter: 'https://example.com',
+      Wechat: 'https://example.com',
+      Weibo: 'https://example.com',
+      Whatsapp: 'https://example.com',
       Youtube: 'https://example.com',
+      Zhihu: 'https://example.com',
     },
   },
+  
+  fullscreen: false,
+
+  themeColor: false,
 
   encrypt: {
     config: {
@@ -50,23 +77,10 @@ export default defineThemeConfig({
     },
   },
 
-  // 禁言全屏功能
-  fullscreen: false,
-
-  themeColor: false,
-
   plugins: {
     blog: {
       autoExcerpt: true,
     },
-
-    // search: {
-    //   locales: {
-    //     '/zh/': {
-    //       placeholder: '搜索',
-    //     },
-    //   },
-    // },
 
     // 如果你不需要评论，可以直接删除 comment 配置，
     // 以下配置仅供体验，如果你需要评论，请自行配置并使用自己的环境，详见文档。
@@ -75,11 +89,11 @@ export default defineThemeConfig({
     //   /**
     //    * Using giscus
     //    */
-    //   type: "giscus",
-    //   repo: "vuepress-theme-hope/giscus-discussions",
-    //   repoId: "R_kgDOG_Pt2A",
-    //   category: "Announcements",
-    //   categoryId: "DIC_kwDOG_Pt2M4COD69",
+    //   type: 'giscus',
+    //   repo: 'vuepress-theme-hope/giscus-discussions',
+    //   repoId: 'R_kgDOG_Pt2A',
+    //   category: 'Announcements',
+    //   categoryId: 'DIC_kwDOG_Pt2M4COD69',
 
     //   /**
     //    * Using twikoo
@@ -95,12 +109,11 @@ export default defineThemeConfig({
     // },
 
     mdEnhance: {
-      // enableAll: fa,
       demo: true,
       mark: true,
-      // presentation: {
-      //   plugins: ['highlight', 'math', 'search', 'notes', 'zoom'],
-      // },
+      presentation: {
+        plugins: ['highlight', 'math', 'search', 'notes', 'zoom'],
+      },
     },
   },
 })
