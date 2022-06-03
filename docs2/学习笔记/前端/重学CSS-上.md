@@ -892,7 +892,7 @@ h2:before {
   background: #04aa6d;
   padding: 20px; 
   width: 200px;
-  height: 150px; 
+  height: 100px; 
 }
 
 #rcorners2 {
@@ -900,7 +900,7 @@ h2:before {
   background: #04aa6d;
   padding: 20px; 
   width: 200px;
-  height: 150px; 
+  height: 100px; 
 }
 
 #rcorners3 {
@@ -908,7 +908,7 @@ h2:before {
   background: #04aa6d;
   padding: 20px; 
   width: 200px;
-  height: 150px; 
+  height: 100px; 
 } 
 
 #rcorners4 {
@@ -916,7 +916,7 @@ h2:before {
   background: #04aa6d;
   padding: 20px; 
   width: 200px;
-  height: 150px; 
+  height: 100px; 
 } 
 ```
 
@@ -1003,6 +1003,7 @@ html {
   border: 15px dotted black;
   padding: 35px;
   background: orange;
+  margin-bottom: 20px;
 }
 
 #example2 {
@@ -1010,6 +1011,7 @@ html {
   padding: 35px;
   background: orange;
   background-clip: padding-box;
+  margin-bottom: 20px;
 }
 
 #example3 {
@@ -1040,3 +1042,164 @@ div {
 ```
 
 + `inherit` 关键字指定属性应从其父元素继承其值。
+
+## 二十二、CSS渐变
+
+CSS 定义了三种渐变类型：
+
+- **线性渐变（向下 / 向上 / 向左 / 向右 / 对角线）**
+- **径向渐变（从中心扩散）**
+- **圆锥渐变（围绕中心点旋转）**
+
+### 22.1 线性渐变
+
+要创建线性渐变，必须定义至少两个色标，色标是在其中呈现平滑过渡的颜色。还可以设置起点和方向（或角度）以及渐变效果。
+
++ 语法：`background-image: linear-gradient(direction, color-stop1, color-stop2, ...);`
++ 也可以使用角度，语法：`background-image: linear-gradient(angle, color-stop1, color-stop2);`
++ `direction` ：默认为从上到下；其值的格式为 `to [终点方向]`
+
+::: normal-demo 线性渐变
+
+```html
+<div id="grad1"></div>	
+```
+
+```css
+#grad1 {
+  height: 130px;
+  background-image: linear-gradient(to bottom right, red, yellow);
+}
+```
+
+:::
+
++ repeating-linear-gradient() 函数用于重复线性渐变
+
+::: normal-demo 线性渐变
+
+```html
+<div id="grad"></div>
+```
+
+```css
+#grad {
+  height: 130px;
+  background-image: repeating-linear-gradient(45deg, red 0px, red 10px, yellow 10px, yellow 20px);
+}
+```
+
+:::
+
+### 22.2 径向渐变
+
+径向渐变，颜色从中心向四周展开，
+
++ 语法：`background-image: radial-gradient(shape | size | position, start-color, ..., last-color);`
+
+| 值                           | 描述                                                         |
+| :--------------------------- | :----------------------------------------------------------- |
+| shape                        | 确定圆的类型。ellipse：默认，指定椭圆形的径向渐变；circle ：指定圆形的径向渐变 |
+| size                         | 定义渐变的大小。<br />farthest-corner：默认，指定渐变半径长度为 **从圆心到离圆心最远的那个角**<br />closest-side ：指定渐变半径长度为 **从圆心到离圆心最近的那条边**<br />closest-corner ： 指定渐变半径长度为 **从圆心到离圆心最近的角**<br />farthest-side ：指定渐变半径长度为 **从圆心到离圆心最远的边** |
+| position                     | 定义渐变的位置。<br />center：默认，设置中间为径向渐变圆心的纵坐标值。<br />top：设置顶部为径向渐变圆心的纵坐标值。<br />bottom：设置底部为径向渐变圆心的纵坐标值。 |
+| start-color, ..., last-color | 指定渐变的起止颜色。                                         |
+
++ `repeating-radial-gradient()` 函数用于重复径向渐变。`background-image: repeating-radial-gradient(red, yellow 10%, green 15%);`
+
+### 22.3 圆锥渐变
+
+语法：`background-image: conic-gradient([from angle] [at position,] color [degree], color [degree], ...);`
+
++ `[from angle]` ：定义颜色开始的位置。例如 `from 90deg`
++ `[at position]` ：定义中心位置。例如 `at 60% 45%`
++ `color [degree]` ：定义颜色的占比。例如 `red 10%, yellow 20%`
+
+其显示效果是颜色圈。例如下面：
+
+::: normal-demo 圆锥渐变
+
+```html
+<div id="grad"></div>
+```
+
+```css
+#grad {
+  background-image: conic-gradient(from 90deg at 70% 30%, red, yellow, green);
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+}
+```
+
+:::
+
++ `repeating-conic-gradient()` 函数用于重复圆锥梯度，`repeating-conic-gradient(red 0deg 10deg, yellow 10deg 20deg, blue 20deg 30deg);`
+
+## 二十三、CSS阴影
+
+阴影分为 文本阴影和 盒子阴影。
+
+文本阴影用于文本，例如 `<h1>` ；盒子阴影用于元素，例如 `<div>`
+
+其值有四个选项：
+
+| Value       | Description                  |
+| :---------- | :--------------------------- |
+| h-shadow    | 必须，指定水平阴影，可以负值 |
+| v-shadow    | 必须，指定垂直阴影，可以负值 |
+| blur-radius | 可选，指定模糊半径，默认为0  |
+| color       | 可选，指定阴影颜色           |
+
+::: normal-demo 阴影效果
+
+```html
+<div class="card">
+  <div class="header">
+    <h1>1</h1>
+  </div>
+
+  <div class="container">
+    <p>January 1, 2021</p>
+  </div>
+</div>
+```
+
+```css
+div.card {
+  width: 250px;
+  text-align: center;
+  border: 2px solid black;
+}
+
+div.card:hover {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+div.header {
+  background-color: #4CAF50;
+  color: white;
+  padding: 5px;
+  font-size: 40px;
+}
+
+div.container {
+  padding: 10px;
+}
+```
+
+:::
+
+## 二十四、文字效果
+
++ `word-wrap` ：指定是否将长单词拆分并换行，其值有：
+  + `normal` ：默认，只在单词间隔换行，文字会溢出到元素外。
+  + `break-word` ：允许在单词中间换行。
++ `word-break` ：指定单词换行规则，其值有：
+  + `normal` ：默认
+  + `keep-all` ：CJK（中文、日语、韩语） 文本不断行。 Non-CJK 文本表现同 `normal`。
+  + `break-all` ：在任意字符换行
+  + *`break-word` ：已过时，尽量在单词间隔换行，也会在单词里面换行*
+
++ `text-overflow` ：指定如何将溢出的文字展示给用户
+  + `clip` ：默认值，超出的文字将不显示
+  + `ellipsis` ：在句子最后面显示 “ ... ” 省略号
