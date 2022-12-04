@@ -66,7 +66,7 @@ export default hopeTheme({
       Zhihu: 'https://example.com',
     },
   },
-  
+
   fullscreen: false,
 
   themeColor: false,
@@ -109,15 +109,18 @@ export default hopeTheme({
     // },
 
     mdEnhance: {
-	  // 启用代码演示
+      // 启用代码演示
       demo: true,
       mark: true,
-	  // 启用数学公式
-	  tex: true,
-	  // 启用下角标功能
+      // 启用数学公式
+      tex: true,
+      // 启用下角标功能
       sub: true,
       // 启用上角标
       sup: true,
+      // 启用echarts
+      echarts: true,
+
       presentation: {
         plugins: ['highlight', 'math', 'search', 'notes', 'zoom'],
       },
