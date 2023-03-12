@@ -1,52 +1,25 @@
 import { navbar } from "vuepress-theme-hope";
 
 export const zhNavbar = navbar([
-  "/zh/",
-  { text: "演示", icon: "discover", link: "/zh/demo/" },
+  { text: '学习', icon: 'creative', link: '/学习/' },
   {
-    text: "博文",
-    icon: "edit",
-    prefix: "/zh/posts/",
-    children: [
-      {
-        text: "苹果",
-        icon: "edit",
-        prefix: "apple/",
-        children: [
-          { text: "苹果1", icon: "edit", link: "1" },
-          { text: "苹果2", icon: "edit", link: "2" },
-          "3",
-          "4",
-        ],
-      },
-      {
-        text: "香蕉",
-        icon: "edit",
-        prefix: "banana/",
-        children: [
-          {
-            text: "香蕉 1",
-            icon: "edit",
-            link: "1",
-          },
-          {
-            text: "香蕉 2",
-            icon: "edit",
-            link: "2",
-          },
-          "3",
-          "4",
-        ],
-      },
-      { text: "樱桃", icon: "edit", link: "cherry" },
-      { text: "火龙果", icon: "edit", link: "dragonfruit" },
-      "tomato",
-      "strawberry",
-    ],
+    text: '日常',
+    icon: 'edit',
+    link: '/日常/',
   },
   {
-    text: "V2 文档",
-    icon: "note",
-    link: "https://theme-hope.vuejs.press/zh/",
+    text: '关于我',
+    icon: 'light',
+    link: 'https://vuepress-theme-hope.github.io/v2/zh/',
+  },
+  {
+    text: '时间轴',
+    icon: 'time',
+    link: '/timeline/',
+  },
+  {
+    text: '常用链接',
+    icon: 'network',
+    link: 'https://vuepress-theme-hope.github.io/v2/zh/',
   },
 ]);
