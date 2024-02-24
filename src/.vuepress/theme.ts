@@ -7,8 +7,7 @@ export default hopeTheme({
   hostname: "https://mister-hope.github.io",
 
   author: {
-    name: "Mr.Hope",
-    url: "https://mister-hope.com",
+    name: "hahg",
   },
 
   iconAssets: "fontawesome-with-brands",
@@ -28,46 +27,6 @@ export default hopeTheme({
   // 页脚
   footer: "默认页脚",
   displayFooter: true,
-
-  // 博客相关
-  blog: {
-    description: "一个前端开发者",
-    intro: "/intro.html",
-    medias: {
-      Baidu: "https://example.com",
-      BiliBili: "https://example.com",
-      Bitbucket: "https://example.com",
-      Dingding: "https://example.com",
-      Discord: "https://example.com",
-      Dribbble: "https://example.com",
-      Email: "mailto:info@example.com",
-      Evernote: "https://example.com",
-      Facebook: "https://example.com",
-      Flipboard: "https://example.com",
-      Gitee: "https://example.com",
-      GitHub: "https://example.com",
-      Gitlab: "https://example.com",
-      Gmail: "mailto:info@example.com",
-      Instagram: "https://example.com",
-      Lark: "https://example.com",
-      Lines: "https://example.com",
-      Linkedin: "https://example.com",
-      Pinterest: "https://example.com",
-      Pocket: "https://example.com",
-      QQ: "https://example.com",
-      Qzone: "https://example.com",
-      Reddit: "https://example.com",
-      Rss: "https://example.com",
-      Steam: "https://example.com",
-      Twitter: "https://example.com",
-      Wechat: "https://example.com",
-      Weibo: "https://example.com",
-      Whatsapp: "https://example.com",
-      Youtube: "https://example.com",
-      Zhihu: "https://example.com",
-      MrHope: ["https://mister-hope.com", MR_HOPE_AVATAR],
-    },
-  },
 
   // 加密配置
   encrypt: {
@@ -135,7 +94,7 @@ export default hopeTheme({
       // insert component easily
 
       // 在启用之前安装 echarts
-      // echarts: true,
+      echarts: true,
 
       // 在启用之前安装 flowchart.ts
       // flowchart: true,
@@ -144,7 +103,7 @@ export default hopeTheme({
       // gfm: true,
 
       // 在启用之前安装 katex
-      // katex: true,
+      katex: true,
 
       // 在启用之前安装 mathjax-full
       // mathjax: true,
